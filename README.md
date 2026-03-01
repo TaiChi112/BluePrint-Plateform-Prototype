@@ -83,7 +83,44 @@ cd frontend && bun run dev
 
 ---
 
-## 📚 Documentation
+## � Quick Links (Start Here!)
+
+👋 **New to Blueprint Hub?** Use these links to get up to speed:
+
+### For Developers
+📖 **[Developer Onboarding Checklist](docs/ONBOARDING.md)** (2-3 hours)
+- 7-phase guided tour of the codebase
+- Links to all visual diagrams
+- Success criteria & next steps
+- **Perfect for**: New hires, self-paced learning
+
+### For Project Managers
+📊 **[GitHub Project Board Setup](docs/PROJECT_BOARD_SETUP.md)** (15 min to set up)
+- Step-by-step MCP roadmap creation
+- 8 MCP integrations planned for Q2-Q3 2026
+- Custom fields & automation configuration
+- **Perfect for**: Tech leads, product managers
+
+### For Everyone
+💼 **[Stakeholder Benefits Analysis](docs/session-notes/2026-03-02-stakeholder-benefits-analysis.md)**
+- Quantified business value ($47K-74K annual productivity gain)
+- Time savings by role
+- ROI analysis
+- **Perfect for**: Leadership, team planning
+
+### Visual System Overview
+📐 **[Complete Diagram Library](docs/diagrams/)** (30+ diagrams)
+- [Architecture](docs/diagrams/architecture.md) - System components (5 min read)
+- [Data Flows](docs/diagrams/data-flow.md) - How data moves through system (10 min)
+- [User Journeys](docs/diagrams/user-journey.md) - User experiences (10 min)
+- [MCP Integration](docs/diagrams/mcp-integration.md) - Future roadmap (15 min)
+- [Deployment](docs/diagrams/deployment.md) - Infrastructure guide (10 min)
+
+**📚 Need more?** See [docs/README.md](docs/README.md) for complete documentation index
+
+---
+
+## �📚 Documentation
 
 **👉 [START HERE: docs/README.md](docs/README.md)** - Complete documentation index
 
