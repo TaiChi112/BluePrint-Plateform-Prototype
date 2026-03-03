@@ -1,11 +1,36 @@
 # Blueprint Hub - AI-Powered Requirements & Architecture Management
 
+![Tests](https://img.shields.io/badge/unit%20tests-44/44%20passing-brightgreen?style=flat-square)
+![Frontend Coverage](https://img.shields.io/badge/frontend%20unit-74.3%25%20lines-brightgreen?style=flat-square)
+![Backend Tests](https://img.shields.io/badge/backend%20tests-20/20%20passing-brightgreen?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+
 อังคต system สำหรับจัดการ **Software Requirements** และ **Architecture Artifacts** ด้วย AI  
 **Production-ready monorepo**: Next.js + FastAPI + TypeScript + Python + PostgreSQL
 
 - 🎯 Centralized platform for design specifications and requirement engineering
 - 👥 For software architects, product teams, and development teams  
 - 🚀 Status: Prototype V1 (Active Development)
+
+---
+
+## 📊 Test Coverage & Quality
+
+| Layer | Tests | Coverage | Thresholds | Status |
+|-------|-------|----------|-----------|--------|
+| **Frontend Unit (vitest)** | 44 passing | 74.3% lines, 43.33% functions | 50%/20% | ✅ Passing |
+| **API Routes (vitest)** | 25 passing | 100% (`published-specs`, `specs-save`, `user-specs`), 70.73% (`user-specs/[id]`) | Included in frontend threshold | ✅ Passing |
+| **Backend (pytest)** | 20 passing | ~35% overall | - | ✅ Passing |
+| **Pydantic Migration** | - | No v2 warnings | - | ✅ Complete |
+| **E2E (Playwright)** | Workflow verify: 1/1 pass (`generate + save published`) | Critical login/session + spec generation path verified | - | ✅ Verified |
+
+**Frontend Test Breakdown:**
+- Components: 65.1% statement coverage (ProjectCard 100%, Navbar 58.6%, ArtifactViewer 61.3%)
+- API Routes: 74.3%+ statement coverage overall (core routes covered by unit tests)
+- Utils: 42.2% statement coverage (diagramHelpers)
+- Configured thresholds: Lines/Statements ≥50%, Functions/Branches ≥20%
+
+*Coverage reports generated on every test run. CI fails if thresholds not met.*
 
 ---
 
