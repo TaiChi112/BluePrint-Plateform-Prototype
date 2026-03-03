@@ -191,3 +191,5 @@ nul
 
 # Migration artifact (can be committed later)
 MIGRATION_COMPLETE.md
+
+.env
