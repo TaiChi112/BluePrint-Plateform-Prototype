@@ -140,6 +140,25 @@ backend/ENV/
 backend/env.bak/
 backend/venv.bak/
 
+### PYTHON FOLDER (Calendar Agent) ###
+
+# Python environments
+python/.venv/
+python/venv/
+python/__pycache__/
+python/*.pyc
+python/.pytest_cache/
+
+# Google OAuth credentials (NEVER COMMIT)
+python/credentials.json
+python/token.json
+python/.env
+
+# Test coverage
+python/htmlcov/
+python/.coverage
+python/coverage.xml
+
 # Spyder
 backend/.spyderproject
 backend/.spyproject
