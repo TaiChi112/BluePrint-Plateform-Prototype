@@ -315,9 +315,21 @@ class PostgreSQLRepository(SpecRepository):
                     id, "userId", "projectName", "problemStatement",
                     "solutionOverview", "functionalRequirements",
                     "nonFunctionalRequirements", "techStackRecommendation",
-                    status, "isPublished", "savedAt", "createdAt", "updatedAt"
+                    status, "isPublished", "visualizationProcess",
+                    "savedAt", "createdAt", "updatedAt"
                 )
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (id) DO UPDATE SET
+                    "projectName" = EXCLUDED."projectName",
+                    "problemStatement" = EXCLUDED."problemStatement",
+                    "solutionOverview" = EXCLUDED."solutionOverview",
+                    "functionalRequirements" = EXCLUDED."functionalRequirements",
+                    "nonFunctionalRequirements" = EXCLUDED."nonFunctionalRequirements",
+                    "techStackRecommendation" = EXCLUDED."techStackRecommendation",
+                    status = EXCLUDED.status,
+                    "isPublished" = EXCLUDED."isPublished",
+                    "visualizationProcess" = EXCLUDED."visualizationProcess",
+                    "updatedAt" = EXCLUDED."updatedAt"
                 """,
                 (
                     final_filename,  # Use filename as ID temporarily
@@ -330,6 +342,7 @@ class PostgreSQLRepository(SpecRepository):
                     spec_data.get("tech_stack_recommendation", []),  # PostgreSQL array
                     spec_data.get("status", "Draft"),
                     spec_data.get("isPublished", True),
+                    json.dumps(spec_data.get("visualizationProcess")) if spec_data.get("visualizationProcess") else None,  # JSON field
                     datetime.now().isoformat(),  # savedAt
                     datetime.now().isoformat(),  # createdAt
                     datetime.now().isoformat(),  # updatedAt
@@ -365,7 +378,8 @@ class PostgreSQLRepository(SpecRepository):
                     id, "userId", "projectName", "problemStatement",
                     "solutionOverview", "functionalRequirements",
                     "nonFunctionalRequirements", "techStackRecommendation",
-                    status, "isPublished", "savedAt", "createdAt", "updatedAt"
+                    status, "isPublished", "visualizationProcess",
+                    "savedAt", "createdAt", "updatedAt"
                 FROM project_specs
                 WHERE id = %s
                 """,
@@ -379,6 +393,14 @@ class PostgreSQLRepository(SpecRepository):
             if not spec_row:
                 return None
 
+            # Parse JSON field if exists
+            visualization_process = None
+            if spec_row["visualizationProcess"]:
+                if isinstance(spec_row["visualizationProcess"], str):
+                    visualization_process = json.loads(spec_row["visualizationProcess"])
+                else:
+                    visualization_process = spec_row["visualizationProcess"]
+
             # Return spec data in expected format
             return {
                 "id": spec_row["id"],
@@ -391,6 +413,7 @@ class PostgreSQLRepository(SpecRepository):
                 "tech_stack_recommendation": spec_row["techStackRecommendation"] or [],
                 "status": spec_row["status"],
                 "isPublished": spec_row["isPublished"],
+                "visualizationProcess": visualization_process,
                 "savedAt": spec_row["savedAt"],
                 "createdAt": spec_row["createdAt"],
                 "updatedAt": spec_row["updatedAt"],
