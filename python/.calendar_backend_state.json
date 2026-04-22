@@ -1,0 +1,4 @@
+{
+  "mode": "api",
+  "credentials_path": "./credentials.json"
+}
